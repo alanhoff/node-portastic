@@ -16,7 +16,7 @@ Finding all opened doors within a range:
 
     options = {
     	min : 8000,
-    	mas : 8005
+    	max : 8005
     }
 
     port.find(options, function(err, data){
