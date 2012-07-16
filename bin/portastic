@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+/*
+	Portastic bin for command line usage.
+
+	@author Alan Hoffmeister <alan@cranic.com.br>
+	@copyright Cranic Tecnologia e Informátics LTDA
+	@version 0.0.1
+	@date 2012-07-16
+*/
+
+var program = require('commander');
+var port = require(__dirname + '/../app.js');
+
+program
+  .version('0.0.1')
+  .option('-f, --find', 'Find ports between range.')
+  .option('-m, --minimum [port]', 'The minimum port to start.')
+  .option('-e, --maximum [port]', 'The maximum port to end.')
+  .option('-r, --retrieve [number]', 'The amout of ports to retrieve.')
+  .option('-t, --test [ports]', 'Test given ports.')
+  .parse(process.argv);
+
+if (program.find) {
+	options = {
+		min : parseInt(program.minimum),
+		max : parseInt(program.maximum)
+	}
+
+	if(program.retrieve)
+		options['retrieve'] = parseInt(program.retrieve)
+
+	port.find(options, function(err, data){
+		if(err)
+			console.log('Error: ', err.message);
+		else
+			console.log(data);
+	});
+} else if (program.test){
+	if(/,/.test(program.test))
+		ports = program.test.split(',');
+	else
+		ports = parseInt(program.test)
+	port.test(ports, function(err, data){
+		if(err)
+			console.log('Error: ', err.message);
+		else
+			console.log(data);		
+	});
+} else {
+	console.log(program.helpInformation());
+}

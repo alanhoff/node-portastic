@@ -1,0 +1,30 @@
+{
+    "author": {
+        "name": "Alan Hoffmeister",
+        "email": "contato@cranic.com.br",
+        "url": "https://github.com/cranic"
+    },
+    "name": "portastic",
+    "description": "Programmatically find open ports with Node.js",
+    "version": "0.0.1",
+    "homepage": "https://github.com/cranic/node-portastic",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/cranic/node-portastic.git"
+    },
+    "main" : "./app.js",
+    "bin" : {
+        "portastic" : "./bin/portastic"
+    },
+    "scripts" : {
+        "test" : "vows --spec"
+    },
+    "dependencies": {
+        "coffee-script": "1.3.x",
+        "async" : "0.1.x",
+        "commander" : "1.0.x"
+    },
+    "engines": {
+        "node": ">=0.8.x"
+    }
+}
