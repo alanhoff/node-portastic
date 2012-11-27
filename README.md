@@ -10,7 +10,7 @@ To install Portastic you can simply use NPM:
 
 #### Usage
 
-Finding all opened doors within a range:
+Finding all opened ports within a range:
 
     port = require('portastic');
 
@@ -25,7 +25,7 @@ Finding all opened doors within a range:
     	console.log(data);
     });
 
-If you wan't to retrieve just one or more doors you can pass it in the options:
+If you wan't to retrieve just one or more ports you can pass it in the options:
 
 	options = {
 		min : 8000,
@@ -45,14 +45,14 @@ You can also test ports:
     		console.log('The port is opened!');
     });
 
-If you wan't to test an array of door, you sure can:
+If you wan't to test an array of ports, you sure can:
 
     port.test([80, 93, 8001, 22], function(err, data){
     	if(err)
     		throw err;
 
-    	// 'data' will be an array with the opened doors only
-    	console.log('Opened doors:', data);
+    	// 'data' will be an array with the opened ports only
+    	console.log('Opened ports:', data);
     });
 
 #### Command line
