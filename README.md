@@ -1,4 +1,4 @@
-# tar.gz
+# portastic
 [![Coverage Status](https://coveralls.io/repos/alanhoff/node-portastic/badge.svg?branch=master)][0]
 [![Travis](https://travis-ci.org/alanhoff/node-portastic.svg)][1]
 [![Dependencies](https://david-dm.org/alanhoff/node-portastic.svg)][2]
