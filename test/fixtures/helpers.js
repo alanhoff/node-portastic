@@ -14,6 +14,11 @@ exports.startTcp = bluebird.method(function(arr, iface) {
         def.reject(err);
       });
 
+      server.on('close', function() {
+        debug('Server TCP at port %s has stopped', number);
+        def.resolve();
+      });
+
       server.listen(number, iface, function(err) {
         if (err)
           def.reject(err);
@@ -43,7 +48,7 @@ exports.autoClose = bluebird.method(function(ports, iface, promise) {
   }
 
   debug('Starting autoclose helper on ports %j', ports);
-  exports.startTcp(ports, iface)
+  return exports.startTcp(ports, iface)
     .then(function(servers) {
       return bluebird.resolve()
         .then(promise)

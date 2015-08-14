@@ -47,18 +47,31 @@ describe('General testing', function() {
   });
 
   describe('#test', function() {
-    it('Should be able to test ports', function() {
+    it('Should return true for open ports', function() {
       return portastic.test(8000)
         .then(function(ports) {
-          expect(ports).to.be.eql([8000]);
+          expect(ports).to.be.eql(true);
         });
     });
 
-    if ('Should not return ports in use', function() {
+    it('Should return false for closed ports', function() {
       return helpers.autoClose(8000, function() {
-        return portastic.test([8000, 8001])
+        return portastic.test(8000)
           .then(function(ports) {
-            expect(ports).to.be.eql([8001]);
+            expect(ports).to.be.eql(false);
+          });
+      });
+    });
+  });
+
+  describe('#filter', function() {
+    it('Should not return closed ports', function() {
+      return helpers.autoClose(8000, function() {
+        return portastic.filter([8000, 8001, 8002])
+          .then(function(ports) {
+            expect(ports).to.have.length(2);
+            expect(ports).to.contain(8001);
+            expect(ports).to.contain(8002);
           });
       });
     });
