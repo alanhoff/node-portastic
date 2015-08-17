@@ -83,16 +83,20 @@ describe('General testing', function() {
       var monitor = new portastic.Monitor([8000, 8001]);
       helpers.captureEvents(monitor, events);
 
-      return helpers.autoClose([8000, 8001], function() {
-          return bluebird.resolve()
-            .delay(500)
-            .then(function() {
-              return monitor.stop();
-            });
+      return bluebird.resolve()
+        .delay(500)
+        .then(function() {
+
+          return helpers.autoClose([8000, 8001], function() {
+            return bluebird.resolve()
+              .delay(500)
+              .then(function() {
+                return monitor.stop();
+              });
+          });
         })
         .delay(500)
         .then(function() {
-          console.log(events);
           expect(events).to.have.length(6);
           events.forEach(function(event, i) {
             if (i <= 1)

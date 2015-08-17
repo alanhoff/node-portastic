@@ -29,6 +29,7 @@
   "homepage": "https://github.com/alanhoff/node-portastic#readme",
   "dependencies": {
     "bluebird": "^2.9.34",
+    "commander": "^2.8.1",
     "debug": "^2.2.0"
   },
   "devDependencies": {
