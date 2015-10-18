@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 var portastic = require('../');
 var commander = require('commander');
