@@ -111,4 +111,13 @@ describe('General testing', function() {
         });
     });
   });
+
+  describe("_callback", function(){
+    it('bypasses promise error catching', function(done){
+      portastic.test(8009, function(callback){
+        expect(callback);
+        done();
+      });
+    })
+  })
 });
