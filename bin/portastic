@@ -22,7 +22,7 @@ commander
   .command('find <min> <max>')
   .alias('f')
   .description('Find ports that are available to use')
-  .option('-r, --retrieve', 'How many ports to retrieve')
+  .option('-r, --retrieve <n>', 'How many ports to retrieve', parseInt)
   .action(function(min, max, options) {
     portastic.find({
       min: min,
