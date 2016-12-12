@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Pure javascript swiss knife for port management",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha --tdd --bail test/**/*-test.js",
     "travis": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec test/**/*-test.js && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/alanhoff/node-portastic#readme",
   "dependencies": {
+    "@types/node": "0.0.2",
     "bluebird": "^2.9.34",
     "commander": "^2.8.1",
     "debug": "^2.2.0"

@@ -3,4 +3,5 @@
 !lib/**/*
 !package.json
 !index.js
+!index.d.ts
 !LICENSE
